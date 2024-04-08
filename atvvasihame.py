@@ -15,12 +15,12 @@ def gerar_estados(estado, visitados):
 
     # Operações possíveis: encher, esvaziar, transferir
     operacoes = [
-        ("encher jarro A", (5, jarro_B)),
-        ("encher jarro B", (jarro_A, 7)),
-        ("esvaziar jarro A", (0, jarro_B)),
-        ("esvaziar jarro B", (jarro_A, 0)),
-        ("transferir de B para A", (min(jarro_A + jarro_B, 5), max(0, jarro_A + jarro_B - 5))),
-        ("transferir de A para B", (max(0, jarro_A + jarro_B - 7), min(jarro_A + jarro_B, 7)))
+        ("Encher jarro A", (5, jarro_B)),
+        ("Encher jarro B", (jarro_A, 7)),
+        ("Esvaziar jarro A", (0, jarro_B)),
+        ("Esvaziar jarro B", (jarro_A, 0)),
+        ("Transferir de B para A", (min(jarro_A + jarro_B, 5), max(0, jarro_A + jarro_B - 5))),
+        ("Transferir de A para B", (max(0, jarro_A + jarro_B - 7), min(jarro_A + jarro_B, 7)))
     ]
 
     # Para cada operação, verifica se o novo estado é válido e não foi visitado
@@ -37,7 +37,7 @@ def busca_vasilhame(litros_desejados):
     fila = deque([("", (0, 0))])  # Começa com os jarros vazios
     while fila:
         operacao, estado = fila.popleft()
-        print(f"Passo: {operacao}, Jarro A ({estado[0]} litros) | Jarro B ({estado[1]} litros)")
+        print(f"Passo: {operacao} | Jarro A ({estado[0]} litros)  Jarro B ({estado[1]} litros)")
         if estado_objetivo(estado, litros_desejados):
             return operacao
         novos_estados = gerar_estados(estado, visitados)
@@ -47,7 +47,7 @@ def busca_vasilhame(litros_desejados):
 # Função principal
 def main():
     litros_desejados = int(input("Digite a quantidade desejada de litros: "))
-    print("Solução:", busca_vasilhame(litros_desejados))
+    print("\nSolução:", busca_vasilhame(litros_desejados))
 
 # Executa o programa
 if __name__ == "__main__":
